@@ -13,7 +13,8 @@ view: predictions {
 
   dimension: order_id {
     primary_key: yes
-    sql: ${TABLE}.order_id ;;
+    hidden: yes
+    sql: ${TABLE}.order_items_order_id ;;
   }
 
   # The output column for BigQuery ML.PREDICT function will be predicted_<label_column_name>
