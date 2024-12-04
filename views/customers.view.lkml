@@ -59,7 +59,7 @@ view: customers {
 
   dimension: gender {
     type: string
-    sql: ${TABLE}.GENDER ;;
+    sql: ${TABLE}.gender ;;
   }
 
   dimension: last_name {
