@@ -117,7 +117,7 @@ view: customers {
   dimension: postcode {
     type: zipcode
     group_label: "Address Info"
-    sql: ${TABLE}.postcode ;;
+    sql: ${TABLE}.postal_code ;;
   }
 
   measure: number_of_customers {

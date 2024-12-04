@@ -23,7 +23,7 @@ view: predictions {
   measure: predicted_is_returned {
     label: "Predicted Return Probability"
     description: "Predicted probability of a return (as provided by ML.PREDICT)"
-    type: max
+    type: average
     sql: ${TABLE}.predicted_order_items_is_returned ;;
     value_format_name: percent_1
   }

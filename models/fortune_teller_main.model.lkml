@@ -32,4 +32,4 @@ explore: orders {
   }
 }
 
-explore: bqml_models {}
+explore: bqml_models{}
