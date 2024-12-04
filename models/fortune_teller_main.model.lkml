@@ -2,23 +2,23 @@ connection: "lookerdata"
 
 include: "/views/*.view"
 
-explore: order_items {
+explore: orders {
   label: "Fortune Teller"
   always_filter: {
     filters: [predictions.model_name: ""]
   }
 
+
   join: customers {
     type:  left_outer
     relationship: many_to_one
-    sql_on: ${order_items.user_id} = ${customers.id} ;;
+    sql_on: ${orders.user_id} = ${customers.id} ;;
   }
 
-  join: inventory_items {
+  join: order_items {
     type:  left_outer
     relationship: many_to_one
-    view_label: "Products"
-    sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
+    sql_on: ${orders.order_id} = ${order_items.order_id} ;;
   }
 
   join: products {
@@ -28,7 +28,7 @@ explore: order_items {
 
   join: predictions {
     relationship: one_to_one
-    sql_on: ${predictions.customers_id} = ${customers.id} ;;
+    sql_on: ${predictions.order_id} = ${orders.order_id} ;;
   }
 }
 

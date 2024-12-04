@@ -20,7 +20,7 @@ view: products {
     label: "Product Category"
     type: string
     sql: ${TABLE}.category ;;
-    drill_fields: [stores.name,brand]
+    drill_fields: [stores.name, brand]
   }
 
   dimension: department {
@@ -64,5 +64,22 @@ view: products {
   measure: list_of_products {
     type: list
     list_field: name
+  }
+
+  measure: retail_price {
+    type: sum
+    sql: ${TABLE}.retail_price ;;
+    value_format_name: usd_0
+  }
+
+  measure: cost {
+    type: sum
+    sql: ${TABLE}.cost ;;
+  }
+
+  measure: average_item_price {
+    type: number
+    sql: ${retail_price} / ${orders.number_of_items} ;;
+    value_format_name: usd_0
   }
 }
