@@ -6,7 +6,7 @@ view: customers {
     value_format_name: id
     primary_key: yes
     type: number
-    sql: ${TABLE}.ID ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: address {
@@ -17,26 +17,26 @@ view: customers {
 
   dimension: age {
     type: number
-    sql: ${TABLE}.AGE ;;
+    sql: ${TABLE}.age ;;
   }
 
   dimension: city {
     type: string
     group_label: "Address Info"
-    sql: ${TABLE}.CITY ;;
+    sql: ${TABLE}.city ;;
   }
 
   dimension: country {
     type: string
     group_label: "Address Info"
     map_layer_name: countries
-    sql: ${TABLE}.COUNTRY ;;
+    sql: ${TABLE}.country ;;
   }
 
   dimension_group: registered {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.CREATED_AT ;;
+    sql: ${TABLE}.created_at ;;
   }
 
   dimension_group: time_as_a_customer {
@@ -48,13 +48,13 @@ view: customers {
   dimension: email {
     type: string
     group_label: "Address Info"
-    sql: ${TABLE}.EMAIL ;;
+    sql: ${TABLE}.email ;;
   }
 
   dimension: first_name {
     type: string
     hidden: yes
-    sql: ${TABLE}.FIRST_NAME ;;
+    sql: ${TABLE}.first_name ;;
   }
 
   dimension: gender {
@@ -65,7 +65,7 @@ view: customers {
   dimension: last_name {
     type: string
     hidden: yes
-    sql: ${TABLE}.LAST_NAME ;;
+    sql: ${TABLE}.last_name ;;
   }
 
   dimension: name {
@@ -76,13 +76,13 @@ view: customers {
   dimension: latitude {
     hidden: yes
     type: number
-    sql: ${TABLE}.LATITUDE ;;
+    sql: ${TABLE}.latitude ;;
   }
 
   dimension: longitude {
     hidden: yes
     type: number
-    sql: ${TABLE}.LONGITUDE ;;
+    sql: ${TABLE}.longitude ;;
   }
 
   dimension: location {
@@ -95,18 +95,18 @@ view: customers {
   dimension: state {
     type: string
     group_label: "Address Info"
-    sql: ${TABLE}.STATE ;;
+    sql: ${TABLE}.state ;;
   }
 
   dimension: traffic_source {
     type: string
-    sql: ${TABLE}.TRAFFIC_SOURCE ;;
+    sql: ${TABLE}.traffic_source ;;
   }
 
   dimension: postcode {
     type: zipcode
     group_label: "Address Info"
-    sql: ${TABLE}.postal_code ;;
+    sql: ${TABLE}.postcode ;;
   }
 
   measure: number_of_customers {
