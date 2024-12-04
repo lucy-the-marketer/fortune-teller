@@ -1,8 +1,8 @@
 view: predictions {
   derived_table: {
     sql: SELECT * FROM ML.PREDICT(
-          MODEL `bqml.model_{% parameter model_name %}`,
-          (SELECT * FROM `bqml.view_{% parameter model_name %}`));;
+          MODEL `fortune-teller-443709.bqml.model_{% parameter model_name %}`,
+          (SELECT * FROM `fortune-teller-443709.bqml.view_{% parameter model_name %}`));;
   }
 
   parameter: model_name {
