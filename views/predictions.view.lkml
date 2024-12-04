@@ -33,7 +33,7 @@ view: predictions {
     description: "Actual return status for the order"
     type: yesno
     sql: CASE
-           WHEN ${orders.is_returned} = 'Yes' THEN 1
+           WHEN ${order_items.is_returned} = 'Yes' THEN 1
            ELSE 0
          END ;;
   }
