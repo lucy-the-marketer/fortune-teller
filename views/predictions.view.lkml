@@ -31,11 +31,8 @@ view: predictions {
   measure: actual_is_returned {
     label: "Actual Return Status"
     description: "Actual return status for the order"
-    type: yesno
-    sql: CASE
-           WHEN ${order_items.is_returned} = 'Yes' THEN 1
-           ELSE 0
-         END ;;
+    type: number
+    sql: sql: CASE WHEN ${order_items.is_returned} THEN 1 ELSE 0 END;;
   }
 
   measure: residual {
