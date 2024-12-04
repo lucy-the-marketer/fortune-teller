@@ -6,31 +6,33 @@ view: products {
     primary_key: yes
     type: number
     hidden: yes
-    sql: ${TABLE}.ID ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: brand {
+    label: "Product Brand"
     type: string
-    sql: ${TABLE}.BRAND ;;
+    sql: ${TABLE}.brand ;;
     drill_fields: [name]
   }
 
   dimension: category {
+    label: "Product Category"
     type: string
-    sql: ${TABLE}.CATEGORY ;;
+    sql: ${TABLE}.category ;;
     drill_fields: [stores.name,brand]
   }
 
   dimension: department {
     label: "Target Gender"
     type: string
-    sql: ${TABLE}.DEPARTMENT ;;
+    sql: ${TABLE}.department ;;
   }
 
   dimension: name {
     label: "Product Name"
     type: string
-    sql: ${TABLE}.NAME ;;
+    sql: ${TABLE}.name ;;
   }
 
   dimension: sku {

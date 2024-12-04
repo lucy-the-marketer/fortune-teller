@@ -5,59 +5,64 @@ view: order_items {
   dimension: id {
     primary_key: yes
     type: number
-    sql: ${TABLE}.ID ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension_group: created {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.CREATED_AT ;;
+    sql: ${TABLE}.created_at ;;
   }
 
   dimension_group: delivered {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.DELIVERED_AT ;;
+    sql: ${TABLE}.delivered_at ;;
   }
 
   dimension: inventory_item_id {
     type: number
-    sql: ${TABLE}.INVENTORY_ITEM_ID ;;
+    sql: ${TABLE}.inventory_item_id ;;
   }
 
   dimension: order_id {
     type: number
-    sql: ${TABLE}.ORDER_ID ;;
+    sql: ${TABLE}.order_id ;;
+  }
+
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
+  }
+
+  dimension: product_id {
+    type: number
+    sql: ${TABLE}.product_id ;;
   }
 
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.RETURNED_AT ;;
+    sql: ${TABLE}.returned_at ;;
   }
 
   dimension: sale_price {
     hidden: yes
     type: number
-    sql: ${TABLE}.SALE_PRICE ;;
+    sql: ${TABLE}.sale_price ;;
   }
 
   dimension_group: shipped {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.SHIPPED_AT ;;
+    sql: ${TABLE}.shipped_at ;;
   }
 
   dimension: status {
     type: string
-    sql: ${TABLE}.STATUS ;;
+    sql: ${TABLE}.status ;;
   }
 
-  dimension: user_id {
-    type: number
-    sql: ${TABLE}.USER_ID ;;
-  }
-  
   measure: last_order_date {
     view_label: "Customers"
     type: date

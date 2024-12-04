@@ -3,7 +3,7 @@ connection: "lookerdata"
 include: "/views/*.view"
 
 explore: order_items {
-  label: "Orders 🏷"
+  label: "Fortune Teller"
   always_filter: {
     filters: [predictions.model_name: ""]
   }
@@ -23,7 +23,7 @@ explore: order_items {
 
   join: products {
     relationship: many_to_one
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    sql_on: ${order_items.product_id} = ${products.id} ;;
   }
 
   join: predictions {
