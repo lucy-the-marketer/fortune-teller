@@ -24,7 +24,7 @@ view: predictions {
     label: "Predicted Return Probability"
     description: "Predicted probability of a return (as provided by ML.PREDICT)"
     type: max
-    sql: ${TABLE}.predicted_orders_is_returned ;;
+    sql: ${TABLE}.predicted_order_items_is_returned ;;
     value_format_name: percent_1
   }
 
