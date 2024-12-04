@@ -28,27 +28,27 @@ view: predictions {
     value_format_name: percent_1
   }
 
-  measure: actual_is_returned {
-    label: "Actual Return Status"
-    description: "Actual return status for the order"
-    type: number
-    sql: CASE WHEN ${order_items.is_returned} THEN 1 ELSE 0 END;;
-  }
+  # measure: actual_is_returned {
+  #   label: "Actual Return Status"
+  #   description: "Actual return status for the order"
+  #   type: number
+  #   sql: CASE WHEN ${order_items.is_returned} THEN 1 ELSE 0 END;;
+  # }
 
-  measure: residual {
-    label: "Residual"
-    description: "Difference between the actual return status and predicted probability"
-    type: number
-    sql: ABS(${actual_is_returned} - ${predicted_is_returned}) ;;
-    value_format_name: percent_1
-  }
+  # measure: residual {
+  #   label: "Residual"
+  #   description: "Difference between the actual return status and predicted probability"
+  #   type: number
+  #   sql: ABS(${actual_is_returned} - ${predicted_is_returned}) ;;
+  #   value_format_name: percent_1
+  # }
 
-  measure: residual_percent {
-    label: "Residual Percentage"
-    description: "Residual as a percentage of the predicted return probability"
-    type: number
-    sql: ABS(1.0 * ${residual} / NULLIF(${predicted_is_returned}, 0)) ;;
-    value_format_name: percent_1
-  }
+  # measure: residual_percent {
+  #   label: "Residual Percentage"
+  #   description: "Residual as a percentage of the predicted return probability"
+  #   type: number
+  #   sql: ABS(1.0 * ${residual} / NULLIF(${predicted_is_returned}, 0)) ;;
+  #   value_format_name: percent_1
+  # }
 
 }

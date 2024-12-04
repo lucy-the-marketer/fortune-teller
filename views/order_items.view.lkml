@@ -118,8 +118,8 @@ view: order_items {
   }
 
   dimension: is_returned {
-    type: yesno
-    sql: ${TABLE}.returned_at IS NOT NULL ;;
-    label: "Is Returned"
+    type: number
+    sql: CASE WHEN ${TABLE}.returned_at IS NOT NULL THEN 1 ELSE 0 END ;;
+    label: "Is Returned (1 if yes, 0 if no)"
   }
 }
