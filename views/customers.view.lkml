@@ -15,10 +15,21 @@ view: customers {
     group_label: "Address Info"
   }
 
-  dimension: age {
-    type: number
-    sql: ${TABLE}.age ;;
+  dimension: age_group {
+    type: string
+    sql:
+    CASE
+      WHEN ${TABLE}.age BETWEEN 10 AND 19 THEN 'Teenager (10s)'
+      WHEN ${TABLE}.age BETWEEN 20 AND 29 THEN 'Young Adult (20s)'
+      WHEN ${TABLE}.age BETWEEN 30 AND 39 THEN 'Adult (30s)'
+      WHEN ${TABLE}.age BETWEEN 40 AND 49 THEN 'Middle-aged (40s)'
+      WHEN ${TABLE}.age BETWEEN 50 AND 59 THEN 'Mature Adult (50s)'
+      WHEN ${TABLE}.age BETWEEN 60 AND 69 THEN 'Senior (60s)'
+      WHEN ${TABLE}.age >= 70 THEN 'Elderly (70s+)'
+      ELSE 'Unknown'
+    END ;;
   }
+
 
   dimension: city {
     type: string

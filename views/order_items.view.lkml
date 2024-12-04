@@ -28,6 +28,7 @@ view: order_items {
   dimension: order_id {
     type: number
     sql: ${TABLE}.order_id ;;
+    hidden: yes
   }
 
   dimension: user_id {
@@ -75,20 +76,6 @@ view: order_items {
     sql: ${order_id} ;;
   }
 
-  measure: average_basket_size {
-    view_label: "Customers"
-    type: number
-    sql: ${inventory_items.number_of_inventory_items} / ${number_of_orders} ;;
-    value_format_name: decimal_1
-  }
-
-  measure: average_basket_value{
-    view_label: "Customers"
-    type: sum
-    sql: ${sale_price} ;;
-    value_format_name: usd
-  }
-
   measure: return_count {
     view_label: "Customers"
     type: count_distinct
@@ -106,27 +93,26 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;
     filters: [returned_time: "NOT NULL"]
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: gross_sales {
     view_label: "Customers"
     type: sum
     sql: ${sale_price} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: net_sales {
     view_label: "Customers"
     type: number
     sql: ${gross_sales} - ${total_returns} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: average_sales_per_customer {
     type: number
     sql: ${gross_sales} / ${customers.number_of_customers} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
-
 }

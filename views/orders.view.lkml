@@ -3,6 +3,7 @@ view: orders {
   sql_table_name: `bigquery-public-data.thelook_ecommerce.orders`;;
 
   dimension: order_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}.order_id ;;
     label: "Order ID"
@@ -25,7 +26,7 @@ view: orders {
 
   dimension_group: created {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, hour, date, week, day_of_week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
 
@@ -48,8 +49,13 @@ view: orders {
   }
 
   measure: number_of_items {
-    type: number
+    type: sum
     sql: ${TABLE}.num_of_item ;;
   }
 
+  dimension: is_returned {
+    type: yesno
+    sql: ${TABLE}.returned_at IS NOT NULL ;;
+    label: "Is Returned"
+  }
 }
