@@ -5,59 +5,66 @@ view: order_items {
   dimension: id {
     primary_key: yes
     type: number
-    sql: ${TABLE}.ID ;;
+    sql: ${TABLE}.id ;;
+    label: "Order Items ID"
   }
 
   dimension_group: created {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.CREATED_AT ;;
+    sql: ${TABLE}.created_at ;;
   }
 
   dimension_group: delivered {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.DELIVERED_AT ;;
+    sql: ${TABLE}.delivered_at ;;
   }
 
   dimension: inventory_item_id {
     type: number
-    sql: ${TABLE}.INVENTORY_ITEM_ID ;;
+    sql: ${TABLE}.inventory_item_id ;;
   }
 
   dimension: order_id {
     type: number
-    sql: ${TABLE}.ORDER_ID ;;
+    sql: ${TABLE}.order_id ;;
+    hidden: yes
+  }
+
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
+  }
+
+  dimension: product_id {
+    type: number
+    sql: ${TABLE}.product_id ;;
   }
 
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.RETURNED_AT ;;
+    sql: ${TABLE}.returned_at ;;
   }
 
   dimension: sale_price {
     hidden: yes
     type: number
-    sql: ${TABLE}.SALE_PRICE ;;
+    sql: ${TABLE}.sale_price ;;
   }
 
   dimension_group: shipped {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.SHIPPED_AT ;;
+    sql: ${TABLE}.shipped_at ;;
   }
 
   dimension: status {
     type: string
-    sql: ${TABLE}.STATUS ;;
+    sql: ${TABLE}.status ;;
   }
 
-  dimension: user_id {
-    type: number
-    sql: ${TABLE}.USER_ID ;;
-  }
-  
   measure: last_order_date {
     view_label: "Customers"
     type: date
@@ -68,20 +75,6 @@ view: order_items {
     view_label: "Customers"
     type: count_distinct
     sql: ${order_id} ;;
-  }
-
-  measure: average_basket_size {
-    view_label: "Customers"
-    type: number
-    sql: ${inventory_items.number_of_inventory_items} / ${number_of_orders} ;;
-    value_format_name: decimal_1
-  }
-
-  measure: average_basket_value{
-    view_label: "Customers"
-    type: sum
-    sql: ${sale_price} ;;
-    value_format_name: usd
   }
 
   measure: return_count {
@@ -101,27 +94,32 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;
     filters: [returned_time: "NOT NULL"]
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: gross_sales {
     view_label: "Customers"
     type: sum
     sql: ${sale_price} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: net_sales {
     view_label: "Customers"
     type: number
     sql: ${gross_sales} - ${total_returns} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: average_sales_per_customer {
     type: number
     sql: ${gross_sales} / ${customers.number_of_customers} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
+  dimension: is_returned {
+    type: number
+    sql: CASE WHEN ${TABLE}.returned_at IS NOT NULL THEN 1 ELSE 0 END ;;
+    label: "Is Returned (1 if yes, 0 if no)"
+  }
 }

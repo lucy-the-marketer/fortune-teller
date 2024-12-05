@@ -1,5 +1,5 @@
 view: bqml_models {
-  sql_table_name: `bqml.bqml_models` ;;
+  sql_table_name: `fortune-teller-443709.bqml.bqml_models` ;;
 
   dimension_group: created {
     type: time

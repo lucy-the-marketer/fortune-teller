@@ -6,31 +6,33 @@ view: products {
     primary_key: yes
     type: number
     hidden: yes
-    sql: ${TABLE}.ID ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: brand {
+    label: "Product Brand"
     type: string
-    sql: ${TABLE}.BRAND ;;
+    sql: ${TABLE}.brand ;;
     drill_fields: [name]
   }
 
   dimension: category {
+    label: "Product Category"
     type: string
-    sql: ${TABLE}.CATEGORY ;;
-    drill_fields: [stores.name,brand]
+    sql: ${TABLE}.category ;;
+    drill_fields: [stores.name, brand]
   }
 
   dimension: department {
     label: "Target Gender"
     type: string
-    sql: ${TABLE}.DEPARTMENT ;;
+    sql: ${TABLE}.department ;;
   }
 
   dimension: name {
     label: "Product Name"
     type: string
-    sql: ${TABLE}.NAME ;;
+    sql: ${TABLE}.name ;;
   }
 
   dimension: sku {
@@ -62,5 +64,22 @@ view: products {
   measure: list_of_products {
     type: list
     list_field: name
+  }
+
+  measure: retail_price {
+    type: sum
+    sql: ${TABLE}.retail_price ;;
+    value_format_name: usd_0
+  }
+
+  measure: cost {
+    type: sum
+    sql: ${TABLE}.cost ;;
+  }
+
+  measure: average_item_price {
+    type: number
+    sql: ${retail_price} / ${orders.number_of_items} ;;
+    value_format_name: usd_0
   }
 }
