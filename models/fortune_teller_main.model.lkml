@@ -1,13 +1,13 @@
 connection: "lookerdata"
 
 include: "/views/*.view"
+include: "/dashboards/*.dashboard.lookml"
 
 explore: orders {
   label: "Fortune Teller"
   always_filter: {
     filters: [predictions.model_name: ""]
   }
-
 
   join: customers {
     type:  left_outer
