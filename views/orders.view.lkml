@@ -52,10 +52,4 @@ view: orders {
     type: sum
     sql: ${TABLE}.num_of_item ;;
   }
-
-  dimension: is_returned {
-    type: yesno
-    sql: ${TABLE}.returned_at IS NOT NULL ;;
-    label: "Is Returned"
-  }
 }

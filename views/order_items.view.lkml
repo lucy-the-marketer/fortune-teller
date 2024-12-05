@@ -6,6 +6,7 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    label: "Order Items ID"
   }
 
   dimension_group: created {
@@ -114,5 +115,11 @@ view: order_items {
     type: number
     sql: ${gross_sales} / ${customers.number_of_customers} ;;
     value_format_name: usd_0
+  }
+
+  dimension: is_returned {
+    type: number
+    sql: CASE WHEN ${TABLE}.returned_at IS NOT NULL THEN 1 ELSE 0 END ;;
+    label: "Is Returned (1 if yes, 0 if no)"
   }
 }
