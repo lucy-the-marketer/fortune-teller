@@ -28,6 +28,13 @@ view: predictions {
     value_format_name: percent_1
   }
 
+  measure: predicted_is_returned_binary {
+    label: "Predicted Return Binary (1 if yes, 0 if no)"
+    description: "Binary indicator for predicted return probability (1 if >= 50%, 0 otherwise)"
+    type: number
+    sql: CASE WHEN ${predicted_is_returned} >= 0.5 THEN 1 ELSE 0 END ;;
+  }
+
   measure: predicted_order_items_net_sales {
     label: "Predicted Net Sales"
     description: "Predicted Net Sales (as provided by ML.PREDICT)"
