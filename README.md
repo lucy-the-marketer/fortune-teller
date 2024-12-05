@@ -9,7 +9,7 @@ Fortune Teller uses the Looker Action API's [BigQuery ML Generator](https://gith
 
 ## Example Models
 
-1. **Logistic Classification**: Predicting the return status (`is_returned`) of orders. *(Dashboard Link)*
+1. **Logistic Classification**: Predicting the return status (`is_returned`) of orders. [Dashboard](https://hack.looker.com/dashboards/fortune_teller_main::return_teller?Model+Name=%22return_teller%22&Ordered+at=7+day&Country=&Gender=&Traffic+Source=)
 2. **Linear Regression**: Predicting `net_sales`. *(Dashboard Link)*
 
 ## How to Create a Model
