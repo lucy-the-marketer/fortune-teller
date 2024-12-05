@@ -10,7 +10,13 @@ Fortune Teller uses the Looker Action API's [BigQuery ML Generator](https://gith
 ## Example Models
 
 1. **Logistic Classification**: Predicting the return status (`is_returned`) of orders. [Dashboard Return Teller](https://hack.looker.com/dashboards/fortune_teller_main::return_teller?Model+Name=%22return_teller%22&Ordered+at=7+day&Country=&Gender=&Traffic+Source=)
+
+![image](https://github.com/user-attachments/assets/1ef313d0-9fc3-4b07-90a1-455ce697a97c)
+
+
 2. **Linear Regression**: Predicting `net_sales`. [Dashboard Profit Teller](https://hack.looker.com/dashboards/fortune_teller_main::profit_teller_dashboard?Model+Name=%22profit_teller%22&Created+Date=last+month)
+
+![image](https://github.com/user-attachments/assets/b82914ee-21e4-4ffe-a4d9-583a6049e885)
 
 ## How to Create a Model
 
@@ -23,6 +29,10 @@ Fortune Teller uses the Looker Action API's [BigQuery ML Generator](https://gith
    - **Model Name**
    - **ID Column**
    - **Target Column**
+  
+<img src="https://github.com/user-attachments/assets/4ea0e0c4-a966-433a-9434-ec9c47c5efe1" alt="image" width="700"/>
+
+
 5. Click **Send** to generate the model.
 
 ## How to Make Predictions
